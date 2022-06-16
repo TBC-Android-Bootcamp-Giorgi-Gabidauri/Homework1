@@ -1,7 +1,7 @@
 package com.gabo.homework1
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,7 +61,7 @@ fun start() {
 
 fun error() {
     println(
-        "თქვენს ჩანაწერში დაფიქსირდა შეცდომა,გთხოვთ მიუთითოთ Yes ან No \n გსურთ პროგრამის ხელახლა დაწყება? \n" +
+        "თქვენს ჩანაწერში დაფიქსირდა შეცდომა,გთხოვთ მიუთითოთ Y ან N \n გსურთ პროგრამის ხელახლა დაწყება? \n" +
                 " <Y/N>?"
     )
     when (readLine()) {
@@ -82,7 +82,7 @@ fun errorX() {
         "Y" -> start()
         "n" -> println("დასასრული")
         "N" -> println("დასასრული")
-        else -> errorX()
+        else -> error()
     }
 }
 
@@ -99,6 +99,23 @@ fun errorY(x: Int?) {
         }
         "n" -> println("დასასრული")
         "N" -> println("დასასრული")
-        else -> errorY(x)
+        else -> errorResume(x)
+    }
+}
+
+fun errorResume(x: Int?) {
+    println("თქვენს ჩანაწერში დაფიქსირდა შეცდომა, გთხოვთ მიუთითოთ Y ან N \n გსურთ გაგრძელება? \n <Y/N>?")
+    when (readLine()) {
+        "y" -> {
+            val y = takeY(x)
+            sum(x, y)
+        }
+        "Y" -> {
+            val y = takeY(x)
+            sum(x, y)
+        }
+        "n" -> println("დასასრული")
+        "N" -> println("დასასრული")
+        else -> errorResume(x)
     }
 }

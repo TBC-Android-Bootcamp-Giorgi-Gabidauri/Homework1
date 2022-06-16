@@ -51,8 +51,12 @@ fun sum(x: Int?, y: Int?) {
 
 fun start() {
     val x = takeX()
-    val y = takeY(x)
-    sum(x, y)
+    if (x is Int) {
+        val y = takeY(x)
+        if (y is Int) {
+            sum(x, y)
+        }
+    }
 }
 
 fun error() {
